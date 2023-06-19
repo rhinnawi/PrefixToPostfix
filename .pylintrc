@@ -1,0 +1,3 @@
+[pylint]
+max-line-length = 80
+variable-rgx = _?[a-z][a-z0-9_]*$
