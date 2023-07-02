@@ -18,6 +18,12 @@ class Stack:
         """
         self._stack: List[Optional[T]] = []
 
+    def __str__(self):
+        """
+        Return a basic string representation of the stack
+        """
+        return ' '.join(map(str, self._stack))
+
     def push(self, item: T) -> 'Stack':
         """"
         Push an item to the top of the stack. 
