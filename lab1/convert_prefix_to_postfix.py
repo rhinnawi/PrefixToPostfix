@@ -1,5 +1,5 @@
 """
-prefix_to_postfix_converter
+convert_prefix_to_postfix
 
 Module for converting a mathematical prefix expression to a postfix expression
 
@@ -24,7 +24,7 @@ def convert_prefix_to_postfix(prefix: str, debug=False) -> str:
 
             # Error case: not enough operands. Operator needs two
             if (first is None or second is None):
-                return "INVALID: the expression contains too many operators"
+                return "INVALID PREFIX: the expression contains too many operators"
 
             expression = first + second + item
             operands.push(expression)
@@ -32,14 +32,14 @@ def convert_prefix_to_postfix(prefix: str, debug=False) -> str:
             operands.push(item)
         else:
             # Error case: inputted character is invalid
-            return f"INVALID INPUT: the item '{item}' is an invalid character."
+            return f"INVALID CHAR: the item '{item}' is an invalid character."
 
     if (debug):
         print("DEBUGGING")
 
     # Error case: no more operators, but more than one operand remains
     if (operands.size() != 1):
-        return "INVALID: the expression contains too many operands"
+        return "INVALID PREFIX: the expression contains too many operands"
 
     # Return the postfix expression
     return operands.peek()
