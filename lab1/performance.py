@@ -1,9 +1,12 @@
 """
+performance
+
 This module holds a class that logs metrics and performance
 
 Author: Rani Hinnawi
 Date: 2023-07-04
 """
+from sys import stderr
 from time import time_ns
 
 
@@ -20,7 +23,7 @@ class Performance:
         and size of input
         """
         self._size = 0
-        self._start_time = 0
+        self._start_time = time_ns()
         self._stop_time = time_ns()
 
     def __str__(self):
@@ -34,12 +37,16 @@ class Performance:
         Setter method for size attribute
 
         Args:
-            size: user-defined size of a process
+            size: user-defined size of a process. Must be >= 0
 
         Returns:
-            Current instance of Performance class
+            Current instance of Performance class with updated size attribute
         """
-        self._size = size
+        if (size < 0):
+            print("Invalid size. Must be >= 0. Automatically setting to 0.",
+                  file=stderr)
+
+        self._size = max(size, 0)
         return self
 
     def get_size(self) -> int:
@@ -60,7 +67,8 @@ class Performance:
         Args: None
 
         Returns: 
-            Current instance of Performance class
+            Current instance of Performance class with updated _start_time
+                attribute
         """
         self._start_time = time_ns()
         return self
@@ -72,7 +80,8 @@ class Performance:
         Args: None
 
         Returns: 
-            Current instance of Performance class
+            Current instance of Performance class with updated _stop_time
+                attribute
         """
         self._stop_time = time_ns()
         return self

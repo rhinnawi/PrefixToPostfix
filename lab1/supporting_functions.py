@@ -9,9 +9,11 @@ Date: 2023-07-04
 """
 from typing import TextIO
 from lab1.prefix_to_postfix import PrefixToPostfix
+from lab1.performance import Performance
 
 
-def generate_output(line_number: int, prefix: str, result: str, error=False) -> str:
+def generate_output(line_number: int, prefix: str, result: str, error=False) \
+        -> str:
     """
     Function that formats the inputted expression and the output given from the
     prefix to postfix conversion.
@@ -25,7 +27,6 @@ def generate_output(line_number: int, prefix: str, result: str, error=False) -> 
     Returns:
         string conditionally formatted based off result type
     """
-
     write = f"{line_number}. Prefix: {prefix}"
 
     if (error):
@@ -48,6 +49,7 @@ def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
     Returns:
         None
     """
+    performance = Performance()
     converter = PrefixToPostfix(valid_operators={'+', '-', '*', '/', '$'})
 
     with open(input_file, 'r', encoding="utf-8") as file, \
@@ -57,18 +59,22 @@ def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
 
         # Loop through input file expressions. Convert and send to output file
         for line in file:
-            # Remove white spaces and set up output string
+            # Remove white spaces. Reset output params. Start runtime timer
             prefix_expression = line.strip()
+            error = False
+            result = 'Not run'
+            performance.set_size(len(prefix_expression)).start()
 
+            # Run converter. Account for error outputs
             try:
-                postfix: str = converter.convert(prefix_expression)
-                out.write(generate_output(
-                    line_counter, prefix_expression, postfix))
+                result = converter.convert(prefix_expression)
             except ValueError as ve:
-                error_message: str = ve.args[0]
-                out.write(generate_output(line_counter,
-                          prefix_expression, error_message, error=True))
+                result = ve.args[0]
+                error = True
             finally:
+                performance.stop()
+                out.write(generate_output(line_counter,
+                          prefix_expression, result, error=error))
                 line_counter += 1
 
         out.write("Done")
