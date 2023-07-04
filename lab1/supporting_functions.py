@@ -8,8 +8,32 @@ Author: Rani Hinnawi
 Date: 2023-07-04
 """
 from typing import TextIO
-from lab1.convert_prefix_to_postfix \
-    import convert_prefix_to_postfix as converter
+from lab1.prefix_to_postfix import PrefixToPostfix
+
+
+def generate_output(line_number: int, prefix: str, result: str, error=False) -> str:
+    """
+    Function that formats the inputted expression and the output given from the
+    prefix to postfix conversion.
+
+    Args:
+        line_number: integer for labelling lines in the output
+        expression: prefix expression string
+        result: postfix expression string OR error message
+        error: boolean indicating whether result is an error message
+
+    Returns:
+        string conditionally formatted based off result type
+    """
+
+    write = f"{line_number}. Prefix: {prefix}"
+
+    if (error):
+        write += f"\n\tERROR - {result}\n"
+    else:
+        write += f" || Postfix: {result}\n"
+
+    return write + '\n'
 
 
 def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
@@ -24,12 +48,27 @@ def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
     Returns:
         None
     """
+    converter = PrefixToPostfix(valid_operators={'+', '-', '*', '/', '$'})
+
     with open(input_file, 'r', encoding="utf-8") as file, \
             open(output_file, 'w', encoding="utf-8") as out:
+        # Counting lines for clean formatting
+        line_counter = 1
+
+        # Loop through input file expressions. Convert and send to output file
         for line in file:
-            expression = line.strip()
-            write = f"Prefix: {expression}\n"
-            write += f"\tPostfix result: {converter(expression)}\n"
-            out.write(write + "\n")
+            # Remove white spaces and set up output string
+            prefix_expression = line.strip()
+
+            try:
+                postfix: str = converter.convert(prefix_expression)
+                out.write(generate_output(
+                    line_counter, prefix_expression, postfix))
+            except ValueError as ve:
+                error_message = ve.args[0]
+                out.write(generate_output(line_counter,
+                          prefix_expression, error_message, error=True))
+            finally:
+                line_counter += 1
 
         out.write("Done")
