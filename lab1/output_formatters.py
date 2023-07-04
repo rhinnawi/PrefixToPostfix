@@ -20,6 +20,7 @@ def format_conversion_results(line_number: int, prefix: str, result: str,
         line_number: integer for labelling lines in the output
         expression: prefix expression string
         result: postfix expression string OR error message
+        metrics: string representation of Performance values (size, runtime)
         error: boolean indicating whether result is an error message
 
     Returns:

@@ -1,8 +1,9 @@
 """
-supporting_functions
+run_conversions
 
-This module contains wrapper and helper functions for running the conversion,
-logging performance metrics, and outputting results to a text file.
+This module contains the primary function for running the conversion, logging
+performance metrics, and outputting results to a text file. It also inclues
+helper functions for error-checking the IO
 
 Author: Rani Hinnawi
 Date: 2023-07-04
@@ -51,6 +52,7 @@ def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
                 result = ve.args[0]
                 error = True
             finally:
+                # Stop timer. Log error / success. Write results to output file
                 performance.stop()
 
                 if (error):
@@ -62,6 +64,7 @@ def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
                                                     result, str(performance), error=error))
                 line_counter += 1
 
+        # Log final metrics
         out.write(format_performance_report(performance))
 
         out.write("\nDone")
