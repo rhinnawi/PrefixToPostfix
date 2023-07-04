@@ -1,3 +1,14 @@
+"""
+stack
+
+This module contains a Stack class that implements the stack ADT, including
+several optional methods.The underlying data structure is a Python List. As a 
+stylistic choice, methods that would otherwise return None will instead return
+self, allowing for method chaining. 
+
+Author: Rani Hinnawi
+Date: 2023-07-04
+"""
 from typing import List, Optional, TypeVar
 
 # Set up generic type for stack to remain type-agnostic
@@ -6,10 +17,7 @@ T = TypeVar('T')
 
 class Stack:
     """
-    Stack class implementing the stack ADT, including several optional methods.
-    The underlying data structure is a Python List. As a stylistic choice,
-    methods that would otherwise return None will return self, allowing for 
-    method chaining. 
+    This class holds items of any type in a generic Stack data structure.
     """
 
     def __init__(self) -> None:
@@ -25,7 +33,7 @@ class Stack:
         return ' '.join(map(str, self._stack))
 
     def push(self, item: T) -> 'Stack':
-        """"
+        """
         Push an item to the top of the stack. 
 
         Args:
@@ -78,7 +86,7 @@ class Stack:
 
     def is_empty(self) -> bool:
         """
-        Checks if stack contains any items.
+        Checks if stack instance currently contains any items.
 
         Args: None
 
