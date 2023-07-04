@@ -8,6 +8,7 @@ Date: 2023-07-04
 """
 from sys import stderr
 from time import time_ns
+from typing import Dict, List
 
 
 class Performance:
@@ -20,17 +21,24 @@ class Performance:
     def __init__(self) -> None:
         """
         Creates instance of Performance class that saves start time, stop time,
-        and size of input
+        and size of input. It also logs previous runs. Times are all in ns
         """
         self._size = 0
         self._start_time = time_ns()
         self._stop_time = time_ns()
 
+        # Log previous successes and failures
+        self._successes: Dict[int, List[int]] = {}
+        self._errors: Dict[int, List[int]] = {}
+
+        self._num_successes = 0
+        self._num_errors = 0
+
     def __str__(self):
         """
         Returns a string representation of the Performance class
         """
-        return f"Size: {self._size}, Runtime: {self.get_runtime}"
+        return f"Size: {self._size}, Runtime: {self.get_runtime()}ns"
 
     def set_size(self, size: int) -> 'Performance':
         """
@@ -97,3 +105,47 @@ class Performance:
             Difference between currently stored start and stop times or 0
         """
         return max(self._stop_time - self._start_time, 0)
+
+    def log_success(self) -> int:
+        """
+        Method for logging the current metrics stored as a success
+
+        Args: None
+
+        Returns:
+            Current instance of Performance class with newly logged success run
+        """
+        new_log = self.get_runtime()
+
+        # Add as a key-value pair {size: runtime}
+        if (self._size in self._successes):
+            self._successes[self._size].append(new_log)
+        else:
+            self._successes[self._size] = [new_log]
+
+        # Update number of success
+        self._num_successes += 1
+
+        return self
+
+    def log_error(self) -> int:
+        """
+        Method for logging the current metrics stored as an error
+
+        Args: None
+
+        Returns:
+            Current instance of Performance class with newly logged failed run
+        """
+        new_log = self.get_runtime()
+
+        # Add as a key-value pair {size: runtime}
+        if (self._size in self._errors):
+            self._errors[self._size].append(new_log)
+        else:
+            self._errors[self._size] = [new_log]
+
+        # Update number of errors
+        self._num_errors += 1
+
+        return self
