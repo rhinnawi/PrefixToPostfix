@@ -106,7 +106,7 @@ class Performance:
         """
         return max(self._stop_time - self._start_time, 0)
 
-    def log_success(self) -> int:
+    def log_success(self) -> 'Performance':
         """
         Method for logging the current metrics stored as a success
 
@@ -128,7 +128,7 @@ class Performance:
 
         return self
 
-    def log_error(self) -> int:
+    def log_error(self) -> 'Performance':
         """
         Method for logging the current metrics stored as an error
 
@@ -149,3 +149,51 @@ class Performance:
         self._num_errors += 1
 
         return self
+
+    def get_successes(self) -> Dict[int, List[int]]:
+        """
+        Getter method for retrieving logged successes. They are formatted as
+        key-value pairs, with keys being the sizes and values being a list of
+        runtimes (ns) for successful runs given that size
+
+        Args: None
+
+        Returns:
+            Key-value pairs of all successful runs
+        """
+        return self._successes
+
+    def get_errors(self) -> Dict[int, List[int]]:
+        """
+        Getter method for retrieving logged failures. They are formatted as
+        key-value pairs, with keys being the sizes and values being a list of
+        runtimes (ns) for failed runs given that size
+
+        Args: None
+
+        Returns:
+            Key-value pairs of all failed runs that returned errors
+        """
+        return self._errors
+
+    def get_num_successes(self) -> int:
+        """
+        Getter method that returns the total number of successful runs logged
+
+        Args: None
+
+        Returns:
+            Number of successful runs logged
+        """
+        return self._num_successes
+
+    def get_num_errors(self) -> int:
+        """
+        Getter method that returns the total number of failed runs logged
+
+        Args: None
+
+        Returns:
+            Number of errors logged
+        """
+        return self._num_errors
