@@ -23,6 +23,9 @@ class PrefixToPostfix:
 
         Args:
             valid_operators: A set of valid operators allowed in the expressions.
+
+        Returns:
+            current instance of PrefixToPostfix converter class
         """
         self._operators = valid_operators
 
@@ -43,7 +46,7 @@ class PrefixToPostfix:
 
                 # Error case: not enough operands. Operator needs two
                 if (first is None or second is None):
-                    error = "INVALID PREFIX: the expression contains too many"
+                    error = "INVALID PREFIX - the expression contains too many"
                     error += " operators"
                     raise ValueError(error)
 

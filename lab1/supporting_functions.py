@@ -65,7 +65,7 @@ def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
                 out.write(generate_output(
                     line_counter, prefix_expression, postfix))
             except ValueError as ve:
-                error_message = ve.args[0]
+                error_message: str = ve.args[0]
                 out.write(generate_output(line_counter,
                           prefix_expression, error_message, error=True))
             finally:
