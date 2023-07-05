@@ -1,9 +1,10 @@
 """
 run_conversions
 
-This module contains the primary function for running the conversion, logging
-performance metrics, and outputting results to a text file. It also inclues
-helper functions for error-checking the IO
+This module contains the primary function for running the conversion. It
+assumes valid I/O and determines which operators are valid. While calling the
+converter, it logs performance metrics. All results are written to the output
+file.
 
 Author: Rani Hinnawi
 Date: 2023-07-04
