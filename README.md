@@ -55,7 +55,7 @@ Usage statements reference
       This file is the entrypoint to the Lab 1 package when run as a program
     - `*.py`
       These are python scripts that do the actual work
-  - [I/O](resources)
+  - [Resources](resources)
     - `*_input.txt`
       These are the required and custom input files for testing code
     - `*_output.txt`
