@@ -43,6 +43,11 @@ def run_conversions(input_file: TextIO, output_file: TextIO, debug=False) -> Non
         for line in file:
             # Remove white spaces. Reset output params. Start runtime timer
             prefix_expression = line.strip()
+
+            # Case: empty line in input. Ignore and move onto the next one
+            if (len(prefix_expression) == 0):
+                continue
+
             error = False
             result = 'Not run'
             performance.set_size(len(prefix_expression)).start()

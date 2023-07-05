@@ -1,0 +1,55 @@
+-------Conversion Results-------
+1. Prefix: -
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 1, Runtime: 48100ns
+
+2. Prefix: -+
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 2, Runtime: 48500ns
+
+3. Prefix: $-+A
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 4, Runtime: 25000ns
+
+4. Prefix: 1+2=3
+	ERROR - INVALID CHAR: the item '3' is an invalid character
+Size: 5, Runtime: 22300ns
+
+5. Prefix: "It's over, Anakin. I have the high ground!"
+	ERROR - INVALID CHAR: the item '"' is an invalid character
+Size: 44, Runtime: 21300ns
+
+6. Prefix: youunderestimatemypower
+	ERROR - INVALID PREFIX: the expression contains too many operands
+Size: 23, Runtime: 27200ns
+
+7. Prefix: A-
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 2, Runtime: 21400ns
+
+8. Prefix: C-3PO
+	ERROR - INVALID CHAR: the item '3' is an invalid character
+Size: 5, Runtime: 22600ns
+
+9. Prefix: +ABC
+	ERROR - INVALID PREFIX: the expression contains too many operands
+Size: 4, Runtime: 24500ns
+
+10. Prefix: ^23
+	ERROR - INVALID CHAR: the item '3' is an invalid character
+Size: 3, Runtime: 21500ns
+
+
+-------Performance Report-------
+Total number of successes: 0
+
+Total number of errors: 10
+1: [48100]
+2: [21400, 48500]
+3: [21500]
+4: [24500, 25000]
+5: [22300, 22600]
+23: [27200]
+44: [21300]
+
+Done

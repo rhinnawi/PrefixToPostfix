@@ -1,0 +1,65 @@
+-------Conversion Results-------
+1. Prefix: A || Postfix: A
+Size: 1, Runtime: 12100ns
+
+2. Prefix: B || Postfix: B
+Size: 1, Runtime: 2100ns
+
+3. Prefix: C || Postfix: C
+Size: 1, Runtime: 1400ns
+
+4. Prefix: +
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 1, Runtime: 30700ns
+
+5. Prefix: -
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 1, Runtime: 47400ns
+
+6. Prefix: *
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 1, Runtime: 22600ns
+
+7. Prefix: /
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 1, Runtime: 59800ns
+
+8. Prefix: $
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 1, Runtime: 21100ns
+
+9. Prefix: 1
+	ERROR - INVALID CHAR: the item '1' is an invalid character
+Size: 1, Runtime: 21600ns
+
+10. Prefix: 2
+	ERROR - INVALID CHAR: the item '2' is an invalid character
+Size: 1, Runtime: 21400ns
+
+11. Prefix: 3
+	ERROR - INVALID CHAR: the item '3' is an invalid character
+Size: 1, Runtime: 21000ns
+
+12. Prefix: 4
+	ERROR - INVALID CHAR: the item '4' is an invalid character
+Size: 1, Runtime: 60000ns
+
+13. Prefix: 5
+	ERROR - INVALID CHAR: the item '5' is an invalid character
+Size: 1, Runtime: 20400ns
+
+14. Prefix: a || Postfix: a
+Size: 1, Runtime: 3100ns
+
+15. Prefix: b || Postfix: b
+Size: 1, Runtime: 1500ns
+
+
+-------Performance Report-------
+Total number of successes: 5
+1: [1400, 1500, 2100, 3100, 12100]
+
+Total number of errors: 10
+1: [20400, 21000, 21100, 21400, 21600, 22600, 30700, 47400, 59800, 60000]
+
+Done
