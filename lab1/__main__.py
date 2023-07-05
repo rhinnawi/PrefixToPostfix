@@ -3,7 +3,7 @@ __main__
 
 This is the entry point for the lab1 package. It runs when explicity called and
 not by default when the package is imported. It can be called by the command:
-python -m lab1 [input file path] [output file path] [optional --debug]
+python -m lab1 input_file output_file [--debug]
 
 The primary functionality lies in the package modules, and not directly in the
 main module here.
