@@ -1,7 +1,9 @@
 """
 performance
 
-This module holds a class that logs metrics and performance
+This module holds a class that tracks metrics and performance. It allows for
+maintaining a timer for runtime, storing size of a process (user's discretion),
+and tracking previous successes' and errors' sizes and runtimes.
 
 Author: Rani Hinnawi
 Date: 2023-07-04
@@ -27,7 +29,7 @@ class Performance:
         self._start_time = time_ns()
         self._stop_time = time_ns()
 
-        # Log previous successes and failures
+        # Log previous successes and failures. Track number of each
         self._successes: Dict[int, List[int]] = {}
         self._errors: Dict[int, List[int]] = {}
 
