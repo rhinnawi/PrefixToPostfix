@@ -46,7 +46,7 @@ class PrefixToPostfix:
 
                 # Error case: not enough operands. Operator needs two
                 if (first is None or second is None):
-                    error = "INVALID PREFIX - the expression contains too many"
+                    error = "INVALID PREFIX: the expression contains too many"
                     error += " operators"
                     raise ValueError(error)
 

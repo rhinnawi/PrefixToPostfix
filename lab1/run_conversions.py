@@ -9,6 +9,7 @@ file.
 Author: Rani Hinnawi
 Date: 2023-07-04
 """
+from sys import stderr
 from typing import TextIO
 from lab1.prefix_to_postfix import PrefixToPostfix
 from lab1.performance import Performance
@@ -16,7 +17,7 @@ from lab1.output_formatters import format_conversion_results, \
     format_performance_report
 
 
-def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
+def run_conversions(input_file: TextIO, output_file: TextIO, debug=False) -> None:
     """
     Wrapper function for running prefix to postfix converter using data from an
     input file. Returns results to output file.
@@ -52,6 +53,11 @@ def run_conversions(input_file: TextIO, output_file: TextIO) -> None:
             except ValueError as ve:
                 result = ve.args[0]
                 error = True
+
+                if (debug):
+                    error_message = \
+                        f"Prefix: {prefix_expression} | ERROR - {result}"
+                    print(error_message, file=stderr)
             finally:
                 # Stop timer. Log error / success. Write results to output file
                 performance.stop()
