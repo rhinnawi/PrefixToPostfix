@@ -39,8 +39,32 @@ class PrefixToPostfix:
         Args:
             prefix: the prefix expression string
         """
-        # TODO: Implement
+        # TODO: Fix and finish implementation
         # TODO: incorporate recursive depth limiter
+        if (len(prefix) == 0):
+            # Error case: empty prefix string. Should have at least one operand
+            return ""
+
+        current: str = prefix.pop()
+        if (current in self._operators):
+            # Case: current item is an operator
+
+            if (len(prefix) < 2):
+                # Error case: not enough operands. Operator needs two
+                error = "INVALID PREFIX: the expression contains too many"
+                error += " operators"
+                raise ValueError(error)
+
+            first = self.convert(prefix)
+            second = self.convert(prefix)
+            return first + second + current
+        elif (current.isalpha()):
+            return current
+        else:
+            # Error case: inputted character is invalid
+            error = f"INVALID CHAR: the item '{current}' is an invalid"
+            error += " character"
+            raise ValueError(error)
 
     def convert_iterative(self, prefix: str) -> Union[str, ValueError]:
         """
