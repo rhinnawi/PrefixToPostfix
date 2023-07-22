@@ -14,7 +14,7 @@ Date: 2023-07-04
 from sys import stderr
 from pathlib import Path
 import argparse
-from lab1 import run_conversions, is_valid_io
+from iterative import run_conversions, is_valid_io
 
 # Set up command line argument parsing
 arg_parser = argparse.ArgumentParser()

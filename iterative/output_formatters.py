@@ -7,7 +7,7 @@ outputted to a text file.
 Author: Rani Hinnawi
 Date: 2023-07-23
 """
-from lab1.performance import Performance
+from iterative.performance import Performance
 
 
 def format_conversion_results(line_number: int, prefix: str, result: str,

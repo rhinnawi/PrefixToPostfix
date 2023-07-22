@@ -11,13 +11,13 @@ Date: 2023-07-04
 """
 from sys import stderr
 from typing import TextIO
-from lab1.prefix_to_postfix import PrefixToPostfix
-from lab1.performance import Performance
-from lab1.output_formatters import format_conversion_results, \
+from lab2.prefix_to_postfix import PrefixToPostfix
+from support.performance import Performance
+from support.output_formatters import format_conversion_results, \
     format_performance_report
 
 
-def run_conversions(input_file: TextIO, output_file: TextIO, debug=False) -> None:
+def run_conversions(input_file: TextIO, output_file: TextIO, recursive=True, debug=False) -> None:
     """
     Wrapper function for running prefix to postfix converter using data from an
     input file. Returns results to output file.
@@ -30,7 +30,8 @@ def run_conversions(input_file: TextIO, output_file: TextIO, debug=False) -> Non
         None
     """
     performance = Performance()
-    converter = PrefixToPostfix(valid_operators={'+', '-', '*', '/', '$'})
+    converter = PrefixToPostfix(
+        valid_operators={'+', '-', '*', '/', '$'}, recursive=recursive)
 
     with open(input_file, 'r', encoding="utf-8") as file, \
             open(output_file, 'w', encoding="utf-8") as out:
