@@ -17,21 +17,27 @@ from support.output_formatters import format_conversion_results, \
     format_performance_report
 
 
-def run_conversions(input_file: TextIO, output_file: TextIO, recursive=True, debug=False) -> None:
+def run_conversions(input_file: TextIO, output_file: TextIO, iterative=False,
+                    debug=False) -> None:
     """
     Wrapper function for running prefix to postfix converter using data from an
     input file. Returns results to output file.
 
     Args:
-        input_file: text file from which prefix expressions will be read
-        output_file: text file to which results will be written
+        input_file (TextIO): text file from which prefix expressions will be
+            read
+        output_file (TextIO): text file to which results will be written
+        iterative (bool, optional): True for iterative implementation. Defaults
+            to False for recursive implementation of conversion.
+        debug (bool, optional): True to activate debugging functionality during
+            run. Defaults to False.
 
     Returns:
         None
     """
     performance = Performance()
     converter = PrefixToPostfix(
-        valid_operators={'+', '-', '*', '/', '$'}, recursive=recursive)
+        valid_operators={'+', '-', '*', '/', '$'}, iterative=iterative)
 
     with open(input_file, 'r', encoding="utf-8") as file, \
             open(output_file, 'w', encoding="utf-8") as out:

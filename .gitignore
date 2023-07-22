@@ -1,5 +1,5 @@
 venv/
-lab1/__pycache__/
+*/__pycache__/
 
 resources/output.txt
 

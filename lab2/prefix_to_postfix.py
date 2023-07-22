@@ -17,18 +17,21 @@ class PrefixToPostfix:
     that converts from prefix to postfix ordering.
     """
 
-    def __init__(self, valid_operators: Set[str], recursive: bool) -> None:
+    def __init__(self, valid_operators: Set[str], iterative: bool) -> None:
         """
         Initialize the PrefixToPostfix class with a set of valid operators.
 
         Args:
-            valid_operators: A set of valid operators allowed in the expressions.
+            valid_operators (Set[char]): A set of valid operators allowed in
+                the expressions.
+            iterative (bool): True for iterative implementation, false for
+                recursive
 
         Returns:
             current instance of PrefixToPostfix converter class
         """
         self._operators = valid_operators
-        self._recursive = recursive
+        self._iterative = iterative
 
     def convert(self, prefix: str) -> Union[str, ValueError]:
         """
@@ -42,10 +45,10 @@ class PrefixToPostfix:
         Returns:
             str: The postfix expression if successful conversion is possible.
         """
-        if (self._recursive):
-            return self._convert_recursive(prefix)
+        if (self._iterative):
+            return self._convert_iterative(prefix)
 
-        return self._convert_iterative(prefix)
+        return self._convert_recursive(prefix)
 
     def _convert_recursive(self, prefix: str) -> Union[str, ValueError]:
         """
