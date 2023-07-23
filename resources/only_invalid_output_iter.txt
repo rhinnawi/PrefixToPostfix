@@ -1,0 +1,59 @@
+-------Conversion Results-------
+1. Prefix: -
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 1, Runtime: 8800ns
+
+2. Prefix: -+
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 2, Runtime: 2300ns
+
+3. Prefix: $-+A
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 4, Runtime: 3400ns
+
+4. Prefix: 1+2=3
+	ERROR - INVALID CHAR: the item '3' is an invalid character
+Size: 5, Runtime: 22000ns
+
+5. Prefix: "It's over, Anakin. I have the high ground!"
+	ERROR - INVALID CHAR: the item '"' is an invalid character
+Size: 44, Runtime: 1500ns
+
+6. Prefix: youunderestimatemypower
+	ERROR - INVALID PREFIX: the expression contains too many operands
+Size: 23, Runtime: 22200ns
+
+7. Prefix: A-
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 2, Runtime: 1400ns
+
+8. Prefix: C-3PO
+	ERROR - INVALID CHAR: the item '3' is an invalid character
+Size: 5, Runtime: 1700ns
+
+9. Prefix: + ABC
+	ERROR - INVALID CHAR: the item ' ' is an invalid character
+Size: 5, Runtime: 1700ns
+
+10. Prefix: ^23
+	ERROR - INVALID CHAR: the item '3' is an invalid character
+Size: 3, Runtime: 1200ns
+
+
+-------Performance Report-------
+Total number of successes: 0
+
+Total number of errors: 10
+1: [8800]
+2: [1400, 2300]
+3: [1200]
+4: [3400]
+5: [1700, 1700, 22000]
+23: [22200]
+44: [1500]
+
+Format:
+	string_size: [runtime1, ..., runtimeN]
+	NOTE: Runtimes measured in nanoseconds (ns)
+
+Done

@@ -1,0 +1,55 @@
+-------Conversion Results-------
+1. Prefix: -+ABC || Postfix: AB+C-
+Size: 5, Runtime: 135100ns
+
+2. Prefix: -A+BC || Postfix: ABC+-
+Size: 5, Runtime: 5500ns
+
+3. Prefix: $+-ABC+D-EF || Postfix: AB-C+DEF-+$
+Size: 11, Runtime: 6000ns
+
+4. Prefix: -*A$B+C-DE*EF || Postfix: ABCDE-+$*EF*-
+Size: 13, Runtime: 5400ns
+
+5. Prefix: **A+BC+C-BA || Postfix: ABC+*CBA-+*
+Size: 11, Runtime: 19800ns
+
+6. Prefix: /A+BC +C*BA
+	ERROR - INVALID PREFIX: the expression contains too many operands OR operands and operators are out of order.
+Size: 11, Runtime: 5100ns
+
+7. Prefix: *-*-ABC+BA
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 10, Runtime: 5800ns
+
+8. Prefix: /+/A-BC-BA
+	ERROR - INVALID PREFIX: the expression contains too many operators
+Size: 10, Runtime: 5000ns
+
+9. Prefix: *$A+BC+C-BA || Postfix: ABC+$CBA-+*
+Size: 11, Runtime: 19900ns
+
+10. Prefix: //A+B0-C+BA
+	ERROR - INVALID CHAR: the item '0' is an invalid character
+Size: 11, Runtime: 3600ns
+
+11. Prefix: *$A^BC+C-BA
+	ERROR - INVALID CHAR: the item '^' is an invalid character
+Size: 11, Runtime: 3700ns
+
+
+-------Performance Report-------
+Total number of successes: 6
+5: [5500, 135100]
+11: [6000, 19800, 19900]
+13: [5400]
+
+Total number of errors: 5
+10: [5000, 5800]
+11: [3600, 3700, 5100]
+
+Format:
+	string_size: [runtime1, ..., runtimeN]
+	NOTE: Runtimes measured in nanoseconds (ns)
+
+Done

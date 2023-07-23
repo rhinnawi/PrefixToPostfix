@@ -5,9 +5,8 @@ Module containing a class for for converting a mathematical prefix expression
 to a postfix expression
 
 Author: Rani Hinnawi
-Date: 2023-07-04
+Date: 2023-07-25
 """
-from sys import stderr
 from typing import Set, Tuple, Union
 from support.stack import Stack
 
@@ -69,7 +68,6 @@ class PrefixToPostfix:
             ValueError: If there are any invalid cases, too many operators, or
                 too many operands in an invalid prefix expression.
         """
-        # TODO: Fix and finish implementation
         # TODO: incorporate recursive depth limiter
         def helper(i=0, num_operands=0) -> Tuple[Union[str, None], int, int]:
             if (i >= len(prefix)):
