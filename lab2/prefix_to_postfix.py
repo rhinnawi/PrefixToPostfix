@@ -7,8 +7,13 @@ to a postfix expression
 Author: Rani Hinnawi
 Date: 2023-07-25
 """
+from sys import setrecursionlimit
 from typing import Set, Tuple, Union
 from support.stack import Stack
+
+# Set recursion limit. Python default: 1000
+RECURSION_LIMIT = 750
+setrecursionlimit(RECURSION_LIMIT)
 
 
 class PrefixToPostfix:
