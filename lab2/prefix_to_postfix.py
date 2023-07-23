@@ -104,6 +104,7 @@ class PrefixToPostfix:
         postfix, _, num_operands = helper()
         if num_operands != (len(postfix) - len(prefix) + 1):
             # Error case: no more operators, but more than one operand remains
+            # TODO: Update error to show out of order operands and operators
             error = "INVALID PREFIX: the expression contains too many operands"
             raise ValueError(error)
 
