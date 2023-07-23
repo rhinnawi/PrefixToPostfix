@@ -8,22 +8,24 @@ input file must already exist as output depends on its values. Output files
 may be newly written, and so only the parent directory must already exist.
 
 Author: Rani Hinnawi
-Date: 2023-07-04
+Date: 2023-07-25
 """
-from typing import TextIO, Union
+from typing import TextIO
 
 
-def is_valid_io(in_file: TextIO, out_file: TextIO) -> \
-        Union[bool, FileNotFoundError]:
+def is_valid_io(in_file: TextIO, out_file: TextIO) -> bool:
     """
     Function that validates that the input and the path to the output exist
 
     Args:
-        in_file: input text file
-        out_file: output text file
+        in_file (TextIO): input text file
+        out_file (TextIO): output text file
 
-    Return:
-        True if file paths are valid. Otherwise, FileNotFoundError
+    Returns:
+        bool: True if file paths are valid
+
+    Raises:
+        FileNotFoundError: If either in_file or out_file does not exist
     """
     error_message = ""
     error = False

@@ -8,7 +8,7 @@ would otherwise return None instead return current instance to allow for method
 chaining.
 
 Author: Rani Hinnawi
-Date: 2023-07-04
+Date: 2023-07-25
 """
 from sys import stderr
 from time import time_ns
@@ -18,7 +18,6 @@ from typing import Dict, List
 class Performance:
     """
     Class for logging space and time performance based stored size and runtime.
-
     """
 
     def __init__(self) -> None:
@@ -48,10 +47,11 @@ class Performance:
         Setter method for size attribute
 
         Args:
-            size: user-defined size of a process. Must be >= 0
+            size (int): user-defined size of a process. Must be >= 0
 
         Returns:
-            Current instance of Performance class with updated size attribute
+            "Performance": Current instance of Performance class with updated
+                size attribute
         """
         if (size < 0):
             print("Invalid size. Must be >= 0. Automatically setting to 0.",
@@ -64,10 +64,8 @@ class Performance:
         """
         Getter method for size attribute
 
-        Args: None
-
         Returns:
-            Stored size of current instance of Performance class
+            int: Stored size of current instance of Performance class
         """
         return self._size
 
@@ -75,11 +73,9 @@ class Performance:
         """
         Setter method for start time. Essentially starts a timer in nanoseconds
 
-        Args: None
-
         Returns: 
-            Current instance of Performance class with updated _start_time
-                attribute
+            "Performance": Current instance of Performance class with updated 
+                _start_time attribute
         """
         self._start_time = time_ns()
         return self
@@ -88,11 +84,9 @@ class Performance:
         """
         Setter method for stop time. Essentially ends a timer in nanoseconds
 
-        Args: None
-
         Returns: 
-            Current instance of Performance class with updated _stop_time
-                attribute
+            "Performance": Current instance of Performance class with updated 
+                _stop_time attribute
         """
         self._stop_time = time_ns()
         return self
@@ -102,10 +96,8 @@ class Performance:
         Returns runtime based off stored start and stop times. If start is
         stored after stop time, returns 0
 
-        Args: None
-
         Returns:
-            Difference between currently stored start and stop times or 0
+            int: Difference between currently stored start and stop times or 0
         """
         return max(self._stop_time - self._start_time, 0)
 
@@ -113,10 +105,9 @@ class Performance:
         """
         Method for logging the current metrics stored as a success
 
-        Args: None
-
         Returns:
-            Current instance of Performance class with newly logged success run
+            "Performance": Current instance of Performance class with newly 
+                logged success run
         """
         new_log = self.get_runtime()
 
@@ -135,10 +126,9 @@ class Performance:
         """
         Method for logging the current metrics stored as an error
 
-        Args: None
-
         Returns:
-            Current instance of Performance class with newly logged failed run
+            "Performance": Current instance of Performance class with newly
+                logged failed run
         """
         new_log = self.get_runtime()
 
@@ -159,10 +149,8 @@ class Performance:
         key-value pairs, with keys being the sizes and values being a list of
         runtimes (ns) for successful runs given that size
 
-        Args: None
-
         Returns:
-            Key-value pairs of all successful runs
+            dict: Key-value pairs of all successful runs
         """
         return self._successes
 
@@ -172,21 +160,17 @@ class Performance:
         key-value pairs, with keys being the sizes and values being a list of
         runtimes (ns) for failed runs given that size
 
-        Args: None
-
         Returns:
-            Key-value pairs of all failed runs that returned errors
+            dict: Key-value pairs of all failed runs that returned errors
         """
         return self._errors
 
     def get_num_successes(self) -> int:
         """
-        Getter method that returns the total number of successful runs logged
-
-        Args: None
+        Getter method that returns the total number of successful runs logge
 
         Returns:
-            Number of successful runs logged
+            int: Number of successful runs logged
         """
         return self._num_successes
 
@@ -194,9 +178,7 @@ class Performance:
         """
         Getter method that returns the total number of failed runs logged
 
-        Args: None
-
         Returns:
-            Number of errors logged
+            int: Number of errors logged
         """
         return self._num_errors

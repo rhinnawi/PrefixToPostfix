@@ -5,7 +5,7 @@ This module contains helper functions called to format strings intended to be
 outputted to a text file.
 
 Author: Rani Hinnawi
-Date: 2023-07-23
+Date: 2023-07-25
 """
 from support.performance import Performance
 
@@ -17,14 +17,14 @@ def format_conversion_results(line_number: int, prefix: str, result: str,
     prefix to postfix conversion.
 
     Args:
-        line_number: integer for labelling lines in the output
-        expression: prefix expression string
-        result: postfix expression string OR error message
-        metrics: string representation of Performance values (size, runtime)
-        error: boolean indicating whether result is an error message
+        line_number (int): number for labelling lines in the output
+        expression (str): prefix expression
+        result (str): postfix expression OR error message
+        metrics (str): string representation of Performance values (size, runtime)
+        error (bool): indicator of whether result is an error message
 
     Returns:
-        string conditionally formatted based off result type
+        str: conditionally formatted results based off result type
     """
     write = f"{line_number}. Prefix: {prefix}"
 
@@ -45,10 +45,10 @@ def format_performance_report(metrics: 'Performance') -> str:
     smallest to largest.
 
     Args:
-        metrics: instance of the Performance class with logged metrics data
+        metrics (Performance): Performance object with logged metrics data
 
     Returns:
-        string of logged successes and failures, formatted to suit a text file
+        str: logged successes and failures, formatted to suit a text file
     """
     write = "\n-------Performance Report-------\n"
 

@@ -41,7 +41,7 @@ class PrefixToPostfix:
         on current instance of PrefixToPostfix object's 'recursive' property.
 
         Args:
-            prefix: the prefix expression string
+            prefix (str): the prefix expression
 
         Returns:
             str: The postfix expression if successful conversion is possible.

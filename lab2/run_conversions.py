@@ -7,7 +7,7 @@ converter, it logs performance metrics. All results are written to the output
 file.
 
 Author: Rani Hinnawi
-Date: 2023-07-04
+Date: 2023-07-25
 """
 from sys import stderr
 from typing import TextIO
