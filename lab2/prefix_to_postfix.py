@@ -18,7 +18,7 @@ class PrefixToPostfix:
     that converts from prefix to postfix ordering.
     """
 
-    def __init__(self, valid_operators: Set[str], iterative: bool, debug=False)\
+    def __init__(self, valid_operators: Set[str], iterative: bool)\
             -> None:
         """
         Initialize the PrefixToPostfix class with a set of valid operators.
@@ -34,7 +34,6 @@ class PrefixToPostfix:
         """
         self._operators = valid_operators
         self._iterative = iterative
-        self._debug = debug
 
     def convert(self, prefix: str) -> str:
         """
@@ -104,13 +103,9 @@ class PrefixToPostfix:
         postfix, _, num_operands = helper()
         if num_operands != (len(postfix) - len(prefix) + 1):
             # Error case: no more operators, but more than one operand remains
-            # TODO: Update error to show out of order operands and operators
             error = "INVALID PREFIX: the expression contains too many operands"
+            error += " OR operands and operators are out of order."
             raise ValueError(error)
-
-        if (self._debug):
-            print(
-                f"prefix: {prefix}, postfix: {postfix}, length: {len(postfix)}", file=stderr)
 
         return postfix
 

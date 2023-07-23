@@ -37,7 +37,7 @@ def run_conversions(input_file: TextIO, output_file: TextIO, iterative=False,
     """
     performance = Performance()
     converter = PrefixToPostfix(valid_operators={'+', '-', '*', '/', '$'},
-                                iterative=iterative, debug=debug)
+                                iterative=iterative)
 
     with open(input_file, 'r', encoding="utf-8") as file, \
             open(output_file, 'w', encoding="utf-8") as out:
