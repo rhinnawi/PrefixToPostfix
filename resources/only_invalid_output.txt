@@ -1,55 +1,59 @@
 -------Conversion Results-------
 1. Prefix: -
 	ERROR - INVALID PREFIX: the expression contains too many operators
-Size: 1, Runtime: 48100ns
+Size: 1, Runtime: 77600ns
 
 2. Prefix: -+
 	ERROR - INVALID PREFIX: the expression contains too many operators
-Size: 2, Runtime: 48500ns
+Size: 2, Runtime: 102100ns
 
 3. Prefix: $-+A
 	ERROR - INVALID PREFIX: the expression contains too many operators
-Size: 4, Runtime: 25000ns
+Size: 4, Runtime: 26000ns
 
 4. Prefix: 1+2=3
-	ERROR - INVALID CHAR: the item '3' is an invalid character
-Size: 5, Runtime: 22300ns
+	ERROR - INVALID CHAR: the item '1' is an invalid character
+Size: 5, Runtime: 23300ns
 
 5. Prefix: "It's over, Anakin. I have the high ground!"
 	ERROR - INVALID CHAR: the item '"' is an invalid character
-Size: 44, Runtime: 21300ns
+Size: 44, Runtime: 23500ns
 
 6. Prefix: youunderestimatemypower
 	ERROR - INVALID PREFIX: the expression contains too many operands
-Size: 23, Runtime: 27200ns
+Size: 23, Runtime: 44300ns
 
 7. Prefix: A-
-	ERROR - INVALID PREFIX: the expression contains too many operators
-Size: 2, Runtime: 21400ns
+	ERROR - INVALID PREFIX: the expression contains too many operands
+Size: 2, Runtime: 23300ns
 
 8. Prefix: C-3PO
-	ERROR - INVALID CHAR: the item '3' is an invalid character
-Size: 5, Runtime: 22600ns
+	ERROR - INVALID PREFIX: the expression contains too many operands
+Size: 5, Runtime: 22500ns
 
 9. Prefix: +ABC
 	ERROR - INVALID PREFIX: the expression contains too many operands
-Size: 4, Runtime: 24500ns
+Size: 4, Runtime: 23700ns
 
 10. Prefix: ^23
-	ERROR - INVALID CHAR: the item '3' is an invalid character
-Size: 3, Runtime: 21500ns
+	ERROR - INVALID CHAR: the item '^' is an invalid character
+Size: 3, Runtime: 23600ns
 
 
 -------Performance Report-------
 Total number of successes: 0
 
 Total number of errors: 10
-1: [48100]
-2: [21400, 48500]
-3: [21500]
-4: [24500, 25000]
-5: [22300, 22600]
-23: [27200]
-44: [21300]
+1: [77600]
+2: [23300, 102100]
+3: [23600]
+4: [23700, 26000]
+5: [22500, 23300]
+23: [44300]
+44: [23500]
+
+Format:
+	string_size: [runtime1, ..., runtimeN]
+	NOTE: Runtimes measured in nanoseconds (ns)
 
 Done

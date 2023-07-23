@@ -36,8 +36,8 @@ def run_conversions(input_file: TextIO, output_file: TextIO, iterative=False,
         None
     """
     performance = Performance()
-    converter = PrefixToPostfix(
-        valid_operators={'+', '-', '*', '/', '$'}, iterative=iterative)
+    converter = PrefixToPostfix(valid_operators={'+', '-', '*', '/', '$'},
+                                iterative=iterative, debug=debug)
 
     with open(input_file, 'r', encoding="utf-8") as file, \
             open(output_file, 'w', encoding="utf-8") as out:
@@ -67,8 +67,8 @@ def run_conversions(input_file: TextIO, output_file: TextIO, iterative=False,
                 error = True
 
                 if (debug):
-                    error_message = \
-                        f"Prefix: {prefix_expression} | ERROR - {result}"
+                    error_message = f"{line_counter}. Prefix: "
+                    error_message += f"{prefix_expression} | ERROR - {result}"
                     print(error_message, file=stderr)
             finally:
                 # Stop timer. Log error / success. Write results to output file

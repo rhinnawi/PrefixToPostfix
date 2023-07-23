@@ -70,4 +70,6 @@ def format_performance_report(metrics: 'Performance') -> str:
         runtime = sorted(errors[size])
         write += f"{size}: {runtime}\n"
 
+    write += "\nFormat:\n\tstring_size: [runtime1, ..., runtimeN]"
+    write += "\n\tNOTE: Runtimes measured in nanoseconds (ns)\n"
     return write

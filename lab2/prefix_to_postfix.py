@@ -7,7 +7,8 @@ to a postfix expression
 Author: Rani Hinnawi
 Date: 2023-07-04
 """
-from typing import Set, Union
+from sys import stderr
+from typing import Set, Tuple, Union
 from support.stack import Stack
 
 
@@ -17,7 +18,8 @@ class PrefixToPostfix:
     that converts from prefix to postfix ordering.
     """
 
-    def __init__(self, valid_operators: Set[str], iterative: bool) -> None:
+    def __init__(self, valid_operators: Set[str], iterative: bool, debug=False)\
+            -> None:
         """
         Initialize the PrefixToPostfix class with a set of valid operators.
 
@@ -32,8 +34,9 @@ class PrefixToPostfix:
         """
         self._operators = valid_operators
         self._iterative = iterative
+        self._debug = debug
 
-    def convert(self, prefix: str) -> Union[str, ValueError]:
+    def convert(self, prefix: str) -> str:
         """
         Wrapper method that converts a mathematical prefix expression to a
         postfix one. It runs an iterative or a recursive implementation based
@@ -50,7 +53,7 @@ class PrefixToPostfix:
 
         return self._convert_recursive(prefix)
 
-    def _convert_recursive(self, prefix: str) -> Union[str, ValueError]:
+    def _convert_recursive(self, prefix: str) -> str:
         """
         Method that takes in a mathematical prefix expression as a string and
         outputs the equivalent expression as a postfix. The expression may only
@@ -69,42 +72,24 @@ class PrefixToPostfix:
         """
         # TODO: Fix and finish implementation
         # TODO: incorporate recursive depth limiter
-
-        def helper(i=0) -> Union[str, ValueError]:
-            """
-            Helper function that takes in a starting index i and recursively 
-            converts a substring of the prefix expression into a postfix
-            expression. The function is expected to parse an 
-            operator-operand-operand or just an operand substring. Only call
-            when prefix is non-empty string.
-
-            Args:
-                i (int, optional): starting index for a substring of the prefix
-                    expression to be parsed. Defaults to 0 if not provided.
-
-            Returns:
-                str: The postfix expression if successful conversion is
-                    possible.
-
-            Raises:
-                ValueError: If an invalid character is passed in or if there
-                    are too many operators
-            """
+        def helper(i=0, num_operands=0) -> Tuple[Union[str, None], int, int]:
             if (i >= len(prefix)):
-                # Error case: not enough operands. Operator needs two
-                error = "INVALID PREFIX: the expression contains too many"
-                error += " operators"
-                raise ValueError(error)
+                return None, i, num_operands
 
             item = prefix[i]
 
-            # Convert
             if (item.isalpha()):
-                return item
+                return item, i, num_operands + 1
             elif (item in self._operators):
-                first = helper(i + 1)
-                second = helper(len(first) + 1)
-                return first + second + item
+                first, i, num_operands = helper(i + 1, num_operands)
+                second, i, num_operands = helper(i + 1, num_operands)
+
+                if (first is None or second is None):
+                    error = "INVALID PREFIX: the expression contains too many"
+                    error += " operators"
+                    raise ValueError(error)
+
+                return first + second + item, i, num_operands
             else:
                 # Error case: inputted character is invalid
                 error = f"INVALID CHAR: the item '{item}' is an invalid"
@@ -116,16 +101,19 @@ class PrefixToPostfix:
             # Case: Valid empty string passed in
             return prefix
 
-        postfix = helper()
-        if (len(postfix) < len(prefix)):
-            # Error case: operands remain after initial operators are visited,
-            # meaning there are too many operands
+        postfix, _, num_operands = helper()
+        if num_operands != (len(postfix) - len(prefix) + 1):
+            # Error case: no more operators, but more than one operand remains
             error = "INVALID PREFIX: the expression contains too many operands"
             raise ValueError(error)
 
+        if (self._debug):
+            print(
+                f"prefix: {prefix}, postfix: {postfix}, length: {len(postfix)}", file=stderr)
+
         return postfix
 
-    def _convert_iterative(self, prefix: str) -> Union[str, ValueError]:
+    def _convert_iterative(self, prefix: str) -> str:
         """
         Function that takes in a mathematical prefix expression as a string and
         outputs the equivalent expression as a postfix. The expression may only
