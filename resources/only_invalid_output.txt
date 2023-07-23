@@ -1,15 +1,15 @@
 -------Conversion Results-------
 1. Prefix: -
 	ERROR - INVALID PREFIX: the expression contains too many operators
-Size: 1, Runtime: 80000ns
+Size: 1, Runtime: 133300ns
 
 2. Prefix: -+
 	ERROR - INVALID PREFIX: the expression contains too many operators
-Size: 2, Runtime: 122400ns
+Size: 2, Runtime: 61700ns
 
 3. Prefix: $-+A
 	ERROR - INVALID PREFIX: the expression contains too many operators
-Size: 4, Runtime: 43100ns
+Size: 4, Runtime: 41300ns
 
 4. Prefix: 1+2=3
 	ERROR - INVALID CHAR: the item '1' is an invalid character
@@ -17,40 +17,40 @@ Size: 5, Runtime: 23000ns
 
 5. Prefix: "It's over, Anakin. I have the high ground!"
 	ERROR - INVALID CHAR: the item '"' is an invalid character
-Size: 44, Runtime: 10000ns
+Size: 44, Runtime: 47900ns
 
 6. Prefix: youunderestimatemypower
-	ERROR - INVALID PREFIX: the expression contains too many operands
-Size: 23, Runtime: 6100ns
+	ERROR - INVALID PREFIX: the expression contains too many operands OR operands and operators are out of order.
+Size: 23, Runtime: 146500ns
 
 7. Prefix: A-
-	ERROR - INVALID PREFIX: the expression contains too many operands
-Size: 2, Runtime: 4700ns
+	ERROR - INVALID PREFIX: the expression contains too many operands OR operands and operators are out of order.
+Size: 2, Runtime: 65300ns
 
 8. Prefix: C-3PO
-	ERROR - INVALID PREFIX: the expression contains too many operands
-Size: 5, Runtime: 4200ns
+	ERROR - INVALID PREFIX: the expression contains too many operands OR operands and operators are out of order.
+Size: 5, Runtime: 42600ns
 
-9. Prefix: +ABC
-	ERROR - INVALID PREFIX: the expression contains too many operands
-Size: 4, Runtime: 7600ns
+9. Prefix: + ABC
+	ERROR - INVALID CHAR: the item ' ' is an invalid character
+Size: 5, Runtime: 107900ns
 
 10. Prefix: ^23
 	ERROR - INVALID CHAR: the item '^' is an invalid character
-Size: 3, Runtime: 19200ns
+Size: 3, Runtime: 24100ns
 
 
 -------Performance Report-------
 Total number of successes: 0
 
 Total number of errors: 10
-1: [80000]
-2: [4700, 122400]
-3: [19200]
-4: [7600, 43100]
-5: [4200, 23000]
-23: [6100]
-44: [10000]
+1: [133300]
+2: [61700, 65300]
+3: [24100]
+4: [41300]
+5: [23000, 42600, 107900]
+23: [146500]
+44: [47900]
 
 Format:
 	string_size: [runtime1, ..., runtimeN]

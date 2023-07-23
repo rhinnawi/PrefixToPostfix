@@ -1,39 +1,43 @@
 -------Conversion Results-------
 1. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 18900ns
+Size: 5, Runtime: 85700ns
 
 2. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 6200ns
+Size: 5, Runtime: 12200ns
 
 3. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 5300ns
+Size: 5, Runtime: 7500ns
 
 4. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 4600ns
+Size: 5, Runtime: 43400ns
 
 5. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 4500ns
+Size: 5, Runtime: 42200ns
 
 6. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 4600ns
+Size: 5, Runtime: 24300ns
 
 7. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 4400ns
+Size: 5, Runtime: 24400ns
 
 8. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 4500ns
+Size: 5, Runtime: 26400ns
 
 9. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 4300ns
+Size: 5, Runtime: 24600ns
 
 10. Prefix: -+ABC || Postfix: AB+C-
-Size: 5, Runtime: 4900ns
+Size: 5, Runtime: 198000ns
 
 
 -------Performance Report-------
 Total number of successes: 10
-5: [4300, 4400, 4500, 4500, 4600, 4600, 4900, 5300, 6200, 18900]
+5: [7500, 12200, 24300, 24400, 24600, 26400, 42200, 43400, 85700, 198000]
 
 Total number of errors: 0
+
+Format:
+	string_size: [runtime1, ..., runtimeN]
+	NOTE: Runtimes measured in nanoseconds (ns)
 
 Done

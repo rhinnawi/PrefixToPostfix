@@ -6,5 +6,5 @@ $-+A
 youunderestimatemypower
 A-
 C-3PO
-+ABC
++ ABC
 ^23

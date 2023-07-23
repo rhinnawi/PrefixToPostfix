@@ -88,7 +88,7 @@ class PrefixToPostfix:
                     error += " operators"
                     raise ValueError(error)
 
-                return first + second + item, i, num_operands
+                return first + second + item, i, num_operands - 1
             else:
                 # Error case: inputted character is invalid
                 error = f"INVALID CHAR: the item '{item}' is an invalid"
@@ -102,7 +102,8 @@ class PrefixToPostfix:
 
         postfix, _, num_operands = helper()
         if num_operands != (len(postfix) - len(prefix) + 1):
-            # Error case: no more operators, but more than one operand remains
+            # Error cases: no more operators, but more than one operand remains
+            #   OR incorrect operator-operand ordering
             error = "INVALID PREFIX: the expression contains too many operands"
             error += " OR operands and operators are out of order."
             raise ValueError(error)
