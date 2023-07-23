@@ -73,7 +73,6 @@ class PrefixToPostfix:
             ValueError: If there are any invalid cases, too many operators, or
                 too many operands in an invalid prefix expression.
         """
-        # TODO: incorporate recursive depth limiter
         def helper(i=0, num_operands=0) -> Tuple[Union[str, None], int, int]:
             if (i >= len(prefix)):
                 return None, i, num_operands
