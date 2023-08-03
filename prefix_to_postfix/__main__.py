@@ -1,9 +1,9 @@
 """
 __main__
 
-This is the entry point for the lab2 package. It runs when explicity called and
-not by default when the package is imported. It can be called by the command:
-python -m prefix_to_postfix input_file output_file [--debug]
+This is the entry point for the prefix_to_postfix package. It runs when explicity 
+called and not by default when the package is imported. It can be called by the
+command: python -m prefix_to_postfix input_file output_file [--debug]
 
 The primary functionality lies in the package modules, and not directly in the
 main module here.
