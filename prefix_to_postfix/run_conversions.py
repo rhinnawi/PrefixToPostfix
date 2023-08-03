@@ -11,7 +11,7 @@ Date: 2023-07-25
 """
 from sys import stderr
 from typing import TextIO
-from lab2.prefix_to_postfix import PrefixToPostfix
+from prefix_to_postfix.prefix_to_postfix import PrefixToPostfix
 from support.performance import Performance
 from support.output_formatters import format_conversion_results, \
     format_performance_report

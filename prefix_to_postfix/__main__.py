@@ -14,7 +14,7 @@ Date: 2023-07-25
 from sys import stderr
 from pathlib import Path
 import argparse
-from lab2 import run_conversions
+from prefix_to_postfix import run_conversions
 from support.is_valid_io import is_valid_io
 
 # Set up command line argument parsing

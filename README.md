@@ -1,4 +1,4 @@
-# Lab 2
+# Prefix to Postfix
 
 This is a self-contained Python package that converts mathematical prefix
 expressions into postfix expressions. It covers two implementations: recursive
@@ -8,25 +8,25 @@ implementation does not leverage any supplemental data structures. Prefix
 expressions must be placed line-by-line in an input text file. Results,
 including performance metrics, are outputted to a user-specified output file.
 
-## Running Lab 2
+## Running Prefix to Postfix
 
 1. Download and install Python on your computer
 2. Navigate to [this](.) directory (containing the README.md)
-3. Run the program as a module: `python -m lab2 -h`. This will print the help message.
-4. Run the program as a module (with real inputs): `python -m lab2 <some_input_file> <some_output_file>`
-   - Example: `python -m lab2 resources/input.txt resources/output.txt`
+3. Run the program as a module: `python -m prefix_to_postfix -h`. This will print the help message.
+4. Run the program as a module (with real inputs): `python -m prefix_to_postfix <some_input_file> <some_output_file>`
+   - Example: `python -m prefix_to_postfix resources/input.txt resources/output.txt`
    - Optional - run the program as a module with errors outputted to stderr:
-     `python -m lab2 <some_input_file> <some_output_file> --debug`
+     `python -m prefix_to_postfix <some_input_file> <some_output_file> --debug`
 
 - Optional - run the program as a module using multiple optional arguments:
-  `python -m lab2 <some_input_file> <some_output_file> --debug --iterative`
+  `python -m prefix_to_postfix <some_input_file> <some_output_file> --debug --iterative`
 
 Output will be written to the specified output file after processing the input file.
 
-### Lab 2 Usage:
+### Prefix to Postfix Usage:
 
 ```commandline
-usage: python -m lab2 [-h] in_file out_file [--debug] [--iterative]
+usage: python -m prefix_to_postfix [-h] in_file out_file [--debug] [--iterative]
 
 positional arguments:
   in_file     Input File Pathname
@@ -53,12 +53,12 @@ Usage statements reference
 - [PrefixToPostfix/](.): The parent or "root" folder containing all of these files
   - [README.md](README.md):
     The guide you're reading.
-  - [lab2](lab2):
+  - [prefix_to_postfix](prefix_to_postfix):
     This is the _package_.
-    - [`__init__.py`](lab2/__init__.py)
+    - [`__init__.py`](prefix_to_postfix/__init__.py)
       This contains the functionality that is automatically run when importing the package
-    - [`__main__.py`](lab2/__main__.py)
-      This file is the entrypoint to the Lab 1 package when run as a program
+    - [`__main__.py`](prefix_to_postfix/__main__.py)
+      This file is the entrypoint to the Prefix to Postfix package when run as a program
     - `*.py`
       These are Python scripts that do the actual work
   - [support](support):
